@@ -1,7 +1,7 @@
 # WhatsApp Baileys
 
 <p align="center">
-  <img src="https://files.catbox.moe/369pux.jpg" alt="Thumbnail" />
+  <img src="https://raw.githubusercontent.com/z4phdev/client/refs/heads/main/thumbnail.png" alt="Thumbnail" />
 </p>
 
 WhatsApp Baileys is an open-source library designed to help developers build automation solutions and integrations with WhatsApp efficiently and directly. Using websocket technology without the need for a browser, this library supports a wide range of features such as message management, chat handling, group administration, as well as interactive messages and action buttons for a more dynamic user experience.
@@ -33,26 +33,44 @@ Begin by installing the library via your preferred package manager, then follow 
 
 ## Add Function ( Simple code )
 
-### Check ID Channel
-Get ID channel 
+### Check ID Channel 
+Get ID Channel From Url
 
 ```javascript
-await sock.newsletterId(url)
+sock.newsletterFromUrl(url)
 ```
-
+Result JSON
+```json
+{
+  "name": "Name Channel",
+  "id": "Channel ID",
+  "state": "Status Channel",
+  "subscribers": "Followers",
+  "verification": "UNVERIFIED",
+  "creation_time": 1728547155,
+  "description": "Description Channel"
+}
+```
+---
 ### Check banned number
 You can see the status of blocked numbers here 
 
 ```javascript
-await sock.checkWhatsApp(jid)
+sock.checkWhatsApp(jid)
 ```
-
 ---
 
 ## SendMessage Documentation
 
+### Status Mention Group & Private Message
+Send Status Mention Group/Private Chat
+
+```javascript
+await sock.sendStatusMention(content, jid);
+```
+
 ### Status Group Message V2
-Send group status with version 2 
+Send Group Status With Version 2 
 
 ```javascript
 await sock.sendMessage(jid, {
@@ -82,13 +100,13 @@ await sock.sendMessage(jid, {
     eventMessage: { 
         isCanceled: false, 
         name: "Hello World", 
-        description: "yume native", 
+        description: "z4phdev", 
         location: { 
             degreesLatitude: 0, 
             degreesLongitude: 0, 
             name: "rowrrrr" 
         }, 
-        joinLink: "https://call.whatsapp.com/video/yumevtc", 
+        joinLink: "https://call.whatsapp.com/video/saweitt", 
         startTime: "1763019000", 
         endTime: "1763026200", 
         extraGuestsAllowed: false 
@@ -125,7 +143,7 @@ await sock.sendMessage(jid, {
     interactiveMessage: {
         header: "Hello World",
         title: "Hello World",
-        footer: "telegram: @yumevtc ",
+        footer: "telegram: @saweitt ",
         buttons: [
             {
                 name: "cta_copy",
@@ -148,26 +166,26 @@ await sock.sendMessage(jid, {
     interactiveMessage: {      
         header: "Hello World",
         title: "Hello World",      
-        footer: "telegram: @yumevtc",      
+        footer: "telegram: @saweitt",      
         image: { url: "https://example.com/image.jpg" },      
         nativeFlowMessage: {        
             messageParamsJson: JSON.stringify({          
                 limited_time_offer: {            
                     text: "idk hummmm?",            
-                    url: "https://t.me/yumevtc",            
-                    copy_code: "yume",            
+                    url: "https://t.me/saweitt",            
+                    copy_code: "z4phdev",            
                     expiration_time: Date.now() * 999          
                 },          
                 bottom_sheet: {            
                     in_thread_buttons_limit: 2,            
                     divider_indices: [1, 2, 3, 4, 5, 999],            
-                    list_title: "yume native",            
-                    button_title: "yume native"          
+                    list_title: "z4phdev",            
+                    button_title: "z4phdev"          
                 },          
                 tap_target_configuration: {            
                     title: " X ",            
                     description: "bomboclard",            
-                    canonical_url: "https://t.me/yumevtc",            
+                    canonical_url: "https://t.me/saweitt",            
                     domain: "shop.example.com",            
                     button_index: 0          
                 }        
@@ -195,7 +213,7 @@ await sock.sendMessage(jid, {
                                 highlight_label: "label",                  
                                 rows: [                    
                                     {                      
-                                        title: "@yumevtc",                      
+                                        title: "@saweitt",                      
                                         description: "love you",                      
                                         id: "row_2"                    
                                     }                  
@@ -227,7 +245,7 @@ await sock.sendMessage(jid, {
     interactiveMessage: {
         header: "Hello World",
         title: "Hello World",
-        footer: "telegram: @yumevtc",
+        footer: "telegram: @saweitt",
         image: { url: "https://example.com/image.jpg" },
         buttons: [
             {
@@ -280,10 +298,10 @@ await sock.sendMessage(jid, {
     interactiveMessage: {
         header: "Hello World",
         title: "Hello World",
-        footer: "telegram: @yumevtc",
+        footer: "telegram: @saweitt",
         document: fs.readFileSync("./package.json"),
         mimetype: "application/pdf",
-        fileName: "yumevtc.pdf",
+        fileName: "saweitt.pdf",
         jpegThumbnail: fs.readFileSync("./document.jpeg"),
         contextInfo: {
             mentionedJid: [jid],
@@ -296,7 +314,7 @@ await sock.sendMessage(jid, {
             mediaType: 3,
             thumbnailUrl: "https://example.com/image.jpg",
             mediaUrl: " X ",
-            sourceUrl: "https://t.me/yumevtc",
+            sourceUrl: "https://t.me/saweitt",
             showAdAttribution: true,
             renderLargerThumbnail: false         
         },
@@ -305,8 +323,8 @@ await sock.sendMessage(jid, {
                 name: "cta_url",
                 buttonParamsJson: JSON.stringify({
                     display_text: "Telegram",
-                    url: "https://t.me/yumevtc",
-                    merchant_url: "https://t.me/yumevtc"
+                    url: "https://t.me/saweitt",
+                    merchant_url: "https://t.me/saweitt"
                 })
             }
         ]
@@ -322,18 +340,18 @@ await sock.sendMessage(jid, {
     interactiveMessage: {
         header: "Hello World",
         title: "Hello World",
-        footer: "telegram: @yumevtc",
+        footer: "telegram: @saweitt",
         document: fs.readFileSync("./package.json"),
         mimetype: "application/pdf",
-        fileName: "yumevtc.pdf",
+        fileName: "saweitt.pdf",
         jpegThumbnail: fs.readFileSync("./document.jpeg"),
         buttons: [
             {
                 name: "cta_url",
                 buttonParamsJson: JSON.stringify({
                     display_text: "Telegram",
-                    url: "https://t.me/yumevtc",
-                    merchant_url: "https://t.me/yumevtc"
+                    url: "https://t.me/saweitt",
+                    merchant_url: "https://t.me/saweitt"
                 })
             }
         ]
@@ -385,9 +403,51 @@ Because this library offers high stability, full features, and an actively impro
 - Compatible with the latest multi-device features from WhatsApp
 - Easy to integrate and customize based on your needs
 - Perfect for developing bots, customer service automation, and other communication applications
+- Has 1 newsletter follow, only the developer's WhatsApp channel: [WhatsApp Channel](https://whatsapp.com/channel/0029VaranC0KmCPQCHryFs2C)
 
 ---
 
 For complete documentation, installation guides, and implementation examples, please visit the official repository and community forums. We continually update and improve this library to meet the needs of developers and users of modern WhatsApp automation solutions.
 
 **Thank you for choosing WhatsApp Baileys as your WhatsApp automation solution!**
+
+
+---
+
+
+### Contact Developer
+
+For questions, support, or collaboration, feel free to contact the developer:
+
+- **Telegram**: [Telegram Contact](https://t.me/tskiofc)
+- **Channel WhatsApp**: [Channel WhatsApp](https://whatsapp.com/channel/0029VaranC0KmCPQCHryFs2C) 
+
+### 🙌 Contributors outside the Baileys code
+
+Thanks to the following awesome contributors who help improve this project 💖
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/z4phdev">
+        <img src="https://github.com/z4phdev.png" width="80px;" style="border-radius:50%;" alt="Developer"/>
+        <br />
+        <sub><b>z4phdev</b></sub>
+      </a>
+    </td>
+<td align="center">
+      <a href="https://github.com/kiuur">
+        <img src="https://github.com/kiuur.png" width="80px;" style="border-radius:50%;" alt="Contributor"/>
+        <br />
+        <sub><b>KyuuRzy</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/RexxHayanasi">
+        <img src="https://github.com/RexxHayanasi.png" width="80px;" style="border-radius:50%;" alt="Contributor"/>
+        <br />
+        <sub><b>RexxHayanasi</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
